@@ -1,6 +1,7 @@
 import cgi
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+
 def createHTMLpage(result):
     if result is not None:
         htmlFile = '''<!DOCTYPE html>
@@ -75,11 +76,11 @@ def createHTMLpage(result):
 </html>'''
     return htmlFile
 
-
-class helloHandler(BaseHTTPRequestHandler):
+# This class is used to handle the GET and POST requests to the webpage
+class webserver(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
-        self.send_header('content-type','text/html')
+        self.send_header('content-type', 'text/html')
         self.end_headers()
         content = createHTMLpage(None)
         self.wfile.write(content.encode())
@@ -92,16 +93,18 @@ class helloHandler(BaseHTTPRequestHandler):
         )
         value = form.getvalue('calculation')
         self.send_response(200)
-        self.send_header('content-type','text/html')
+        self.send_header('content-type', 'text/html')
         self.end_headers()
         content = createHTMLpage(value)
         self.wfile.write(content.encode())
 
+
 def main():
     PORT = 8080
-    server = HTTPServer(('',PORT),helloHandler)
+    server = HTTPServer(('', PORT), webserver)
     print("Server running on localhost:%s" % PORT)
     server.serve_forever()
+
 
 if __name__ == '__main__':
     main()
