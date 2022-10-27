@@ -24,7 +24,7 @@ def isOperator(c: str):
 
 
 # perform takes an operaton and returns the output of this operation.
-def perform(val1: float|int, op: str|int, val2: float|int):
+def perform(val1: float | int, op: str | int, val2: float | int):
     match op:
         case '+':
             return val1 + val2
