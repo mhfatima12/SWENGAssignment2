@@ -30,8 +30,6 @@ def test_isOperator() -> None:
         ('/', True),
         ('*', True),
         ('^', True),
-        ('exp', True),
-        ('log', True),
         ('a', False),
         ('a+c', False),
     ]
@@ -53,14 +51,9 @@ def test_perform() -> None:
         (5, '-', 2, 3),
         (3, '^', 2, 9),
         (5, '/', 0, 'divide by zero'),
-        (6, '/', 2, 3),
-        (20, '/', 3, 6.667, 'division: rounded to three decimal places')
         (4, '*', 2, 8),
         (1.5, '-', 0.5, 1.0),
-        (345, '***', 7, 'could not perform operation: 345***7'),
-        (3, '+**', 8, 'could not perform operation: 3+**8'),
-        ('exp', 4, 54.598, 'exp function, result rounded off to 3 decimal places'),
-        ('log', 4, 0.602)
+        (345, '***', 7, 'could not perform operation: 345***7')
     ]
 
     hasFail = False

@@ -9,7 +9,7 @@ def isNumber(c: str):
     return True
 
 
-operators = ['+', '-', '/', '*', '^', 'exp', 'log']
+operators = ['+', '-', '/', '*', '^']
 
 
 # isOperator checks if the given string is an operator.
