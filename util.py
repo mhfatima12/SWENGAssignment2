@@ -23,7 +23,6 @@ def isOperator(c: str):
     return False
 
 
-
 # perform takes an operaton and returns the output of this operation.
 def perform(val1: float | int, op: str | int, val2: float | int = sys.float_info.min):
     op = op.lower()
@@ -45,5 +44,3 @@ def perform(val1: float | int, op: str | int, val2: float | int = sys.float_info
         case 'exp':
             return math.exp(val1)
     return "could not perform operation: " + str(val1) + op + str(val2)
-
-

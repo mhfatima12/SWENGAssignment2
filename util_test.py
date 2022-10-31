@@ -32,12 +32,12 @@ def test_isOperator() -> None:
         ('^', True),
         ('a', False),
         ('a+c', False),
-        ('log',True),
-        ('Log',True),
-        ('EXP',True),
-        ('ExP',True),
-        ('expres',False),
-        ('logs',False)
+        ('log', True),
+        ('Log', True),
+        ('EXP', True),
+        ('ExP', True),
+        ('expres', False),
+        ('logs', False)
     ]
 
     hasFail = False
@@ -60,10 +60,10 @@ def test_perform() -> None:
         (4, '*', 2, 8),
         (1.5, '-', 0.5, 1.0),
         (345, '***', 7, 'could not perform operation: 345***7'),
-        (2, 'exp', 0,7.38905609893065),
-        (2, 'exp', 10,7.38905609893065),
-        (2, 'log', 0,0.6931471805599453),
-        (2, 'log', 10,0.6931471805599453),
+        (2, 'exp', 0, 7.38905609893065),
+        (2, 'exp', 10, 7.38905609893065),
+        (2, 'log', 0, 0.6931471805599453),
+        (2, 'log', 10, 0.6931471805599453),
     ]
 
     hasFail = False
@@ -75,19 +75,20 @@ def test_perform() -> None:
                   str(test[3])+" got: "+str(result))
     assert not hasFail
 
-    def test_perform2()->None:
-        tests = [
+
+def test_perform2() -> None:
+    tests = [
         (2, 'exp', 7.38905609893065),
         (2, 'exp', 7.38905609893065),
         (2, 'log', 0.6931471805599453),
         (2, 'log', 0.6931471805599453),
     ]
 
-        hasFail = False
-        for test in tests:
-            result = util.perform(test[0], test[1])
-            if result != test[2]:
-                hasFail = True
-                print("perform("+str(test[0])+test[1]+str(test[2])+") expected: " +
+    hasFail = False
+    for test in tests:
+        result = util.perform(test[0], test[1])
+        if result != test[2]:
+            hasFail = True
+            print("perform("+str(test[0])+test[1]+str(test[2])+") expected: " +
                   str(test[3])+" got: "+str(result))
-        assert not hasFail
+    assert not hasFail
