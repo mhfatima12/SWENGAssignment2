@@ -32,6 +32,12 @@ def test_isOperator() -> None:
         ('^', True),
         ('a', False),
         ('a+c', False),
+        ('log',True),
+        ('Log',True),
+        ('EXP',True),
+        ('ExP',True),
+        ('expres',False),
+        ('logs',False)
     ]
 
     hasFail = False
@@ -53,7 +59,11 @@ def test_perform() -> None:
         (5, '/', 0, 'divide by zero'),
         (4, '*', 2, 8),
         (1.5, '-', 0.5, 1.0),
-        (345, '***', 7, 'could not perform operation: 345***7')
+        (345, '***', 7, 'could not perform operation: 345***7'),
+        (2, 'exp', 0,7.38905609893065),
+        (2, 'exp', 10,7.38905609893065),
+        (2, 'log', 0,0.6931471805599453),
+        (2, 'log', 10,0.6931471805599453),
     ]
 
     hasFail = False
