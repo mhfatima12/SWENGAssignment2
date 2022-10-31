@@ -74,3 +74,20 @@ def test_perform() -> None:
             print("perform("+str(test[0])+test[1]+str(test[2])+") expected: " +
                   str(test[3])+" got: "+str(result))
     assert not hasFail
+
+    def test_perform2()->None:
+        tests = [
+        (2, 'exp', 7.38905609893065),
+        (2, 'exp', 7.38905609893065),
+        (2, 'log', 0.6931471805599453),
+        (2, 'log', 0.6931471805599453),
+    ]
+
+        hasFail = False
+        for test in tests:
+            result = util.perform(test[0], test[1])
+            if result != test[2]:
+                hasFail = True
+                print("perform("+str(test[0])+test[1]+str(test[2])+") expected: " +
+                  str(test[3])+" got: "+str(result))
+        assert not hasFail

@@ -1,4 +1,5 @@
 import math as math
+import sys
 
 
 # isNumber takes a string c and checks if the given string is a float or integer.
@@ -22,8 +23,9 @@ def isOperator(c: str):
     return False
 
 
+
 # perform takes an operaton and returns the output of this operation.
-def perform(val1: float | int, op: str | int, val2: float | int = 1.0):
+def perform(val1: float | int, op: str | int, val2: float | int = sys.float_info.min):
     op = op.lower()
     match op:
         case '+':
