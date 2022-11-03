@@ -1,4 +1,5 @@
 from typing import List
+import string as string
 
 OPERATORS = ('+', '-', '*')
 DIGITS = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')
@@ -60,7 +61,12 @@ def is_digit(digit):
     return digit in DIGITS
 
 
+def remove_whitespace(sequence:str):
+    return sequence.replace(" ","")
+
 def calculate(sequence):
+    sequence = remove_whitespace(sequence)
+    print(sequence)
     se_lst = list(sequence)
     if is_valid(se_lst):
         try:
