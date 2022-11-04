@@ -9,7 +9,7 @@ def test_is_valid() -> None:
         ('test', False),
         ('12.a234', False),
         ('124904,3402', False),
-        #('++', False),
+        ('++', False), #currently failing
         ('+', True),
         ('-', True),
         ('/', True),
@@ -17,9 +17,10 @@ def test_is_valid() -> None:
         ('^', True),
         ('a', False),
         ('log', True),
-        #('Log', True),
-        #('EXP', True),
-        #('ExP', True),
+        ('Log', True), #currently failing
+        ('EXP', True), #currently failing
+        ('ExP', True), #currently failing
+        ('exp', True),
         ('expres', False),
         ('logs', False),
         ('(', True),
