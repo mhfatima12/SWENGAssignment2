@@ -207,10 +207,17 @@ def is_operator(op):
     return op in OPERATORS
 
 
+# remove whitespace in a string
+def remove_whitespace(sequence:str):
+    return sequence.replace(" ","")
+
+
 # user input and result output
 if __name__ == '__main__':
     while True:
         sequence = input("Please enter a sequence that you want to compute: (q to end)")
+        sequence = remove_whitespace((sequence))
+        print(sequence)
         lst = list(sequence)
         if sequence == 'q':
             break
