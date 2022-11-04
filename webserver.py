@@ -2,7 +2,7 @@ import cgi
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import Calc as calc
 
-def createHTMLpage(result):
+def createHTMLpage(value,result):
     if result is not None:
         htmlFile = '''<!DOCTYPE html>
 <html>
@@ -34,7 +34,8 @@ def createHTMLpage(result):
         <input type="text" id="calculation" name="calculation"><br><br>
         <input type="submit" value="Calculate">
     </form>
-    <p>Use log(x) to calculate the natual log and exp(x) to calculate e^x.</p>
+    <p>Use log(x) to calculate the natual log and exp(x) to calculate e^x.</p><br>
+    <h3>Previous Calculation:  '''+str(value)+'''</h3>
     <h3>Result:  '''+str(result)+'''</h3>
 </body>
 
@@ -82,7 +83,7 @@ class webserver(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('content-type', 'text/html')
         self.end_headers()
-        content = createHTMLpage(None)
+        content = createHTMLpage(None,None)
         self.wfile.write(content.encode())
 
     def do_POST(self):
@@ -96,7 +97,7 @@ class webserver(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('content-type', 'text/html')
         self.end_headers()
-        content = createHTMLpage(result)
+        content = createHTMLpage(value,result)
         self.wfile.write(content.encode())
 
 def main():

@@ -1,13 +1,14 @@
 from decimal import *
 import math
 import sys
+from typing import List
 OPERATORS = ('+', '-', '*', '/', '^', '(', ')', '.', 'l', 'o', 'g', 'e', 'x', 'p')
 DIGITS = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')
 WELCOME = "Please enter a sequence that you want to compute: (q to quit)"
 INVALID_INPUT = "Invalid input: please type like log3+-5*exp(4.2)/(5+7) or log(3)+(-5)*exp(4.2)/(5+7)"
-ERROR_INPUT = "The sequence must only include operators and digits"
-ZERO_DIVISION = "You cannot divide a number by zero!"
-MATHEMATICAL_ERROR = "Mathematical mistakes: the domain of log must be positive"
+ERROR_INPUT = "Error: The sequence must only include operators and digits"
+ZERO_DIVISION = "Error: division by zero"
+MATHEMATICAL_ERROR = "Mathematical Error: the domain of log must be positive"
 stack = []
 
 
@@ -53,11 +54,13 @@ def operation(number_list, operator_list):
         mul_div(number_list, operator_list)
         add_sub(number_list, operator_list)
     except ZeroDivisionError:
-        sys.exit(ZERO_DIVISION)
+        raise Exception(ZERO_DIVISION)
     except InvalidOperation:
-        sys.exit(INVALID_INPUT)
-    except ValueError:
-        sys.exit(MATHEMATICAL_ERROR)
+        raise Exception(INVALID_INPUT)
+    except ValueError as e:
+        raise Exception(MATHEMATICAL_ERROR)
+    except Exception as e:
+        raise e
     return number_list, operator_list
 
 
@@ -97,7 +100,7 @@ def bracket(lst):
 
 
 # do log and exp calculation
-def log_exp(number_list, operator_list):
+def log_exp(number_list:List, operator_list:List):
     i = 0
     while i < operator_list.__len__():
         if operator_list[i] == 'l':
@@ -108,9 +111,13 @@ def log_exp(number_list, operator_list):
                 number_list.pop(i)
                 number_list.pop(i)
                 number_list.pop(i)
-                number_list[i] = Decimal(str(math.log(float(number_list[i]))))
+                if number_list[i] is None or number_list[i] == '':
+                    raise Exception("Invalid Input: log has no arguments given")
+                if float(number_list[i])<=0.0:
+                    raise Exception(MATHEMATICAL_ERROR)
+                number_list[i] = math.log(float(number_list[i]))
             else:
-                sys.exit(INVALID_INPUT)
+                raise Exception(INVALID_INPUT)
             i -= 1
         elif operator_list[i] == 'e':
             if operator_list.__len__() > i + 2 and operator_list[i+1] == 'x' and operator_list[i+2] == 'p':
@@ -127,15 +134,15 @@ def log_exp(number_list, operator_list):
                     number_list.pop(i)
                 number_list[i] = Decimal(str(math.exp(float(number))))
             else:
-                sys.exit(INVALID_INPUT)
+                raise Exception(INVALID_INPUT)
             i -= 1
         elif operator_list[i] == 'o' or operator_list[i] == 'g' or operator_list[i] == 'x' or operator_list[i] == 'p':
-            sys.exit(INVALID_INPUT)
+            raise Exception(INVALID_INPUT)
         i += 1
 
 
 # do power calculation
-def power(number_list, operator_list):
+def power(number_list:List, operator_list:List):
     i = 0
     while i < operator_list.__len__():
         if operator_list[i] == '^':
@@ -155,7 +162,7 @@ def power(number_list, operator_list):
 
 
 # do multiply and division calculation
-def mul_div(number_list, operator_list):
+def mul_div(number_list:List, operator_list:List):
     i = 0
     while i < operator_list.__len__():
         if operator_list[i] == '*' or operator_list[i] == '/':
@@ -178,7 +185,7 @@ def mul_div(number_list, operator_list):
 
 
 # do addition and subtraction calculation
-def add_sub(number_list, operator_list):
+def add_sub(number_list:List, operator_list:List):
     i = 0
     while i < operator_list.__len__():
         if operator_list[i] == '+' or operator_list[i] == '-':
@@ -212,18 +219,29 @@ def remove_whitespace(sequence:str):
     return sequence.replace(" ","")
 
 
-# user input and result output
-if __name__ == '__main__':
-    while True:
-        sequence = input(WELCOME)
+def calculate(sequence):
+    try:
         sequence = remove_whitespace((sequence))
-        print(sequence)
         lst = list(sequence)
-        if sequence == 'q':
-            break
-        elif is_valid(lst):
+        if is_valid(lst):
             result = calc(lst)
-            stack.clear()
-            print("The result for", sequence, "is", "%.3f" % float(result))
-        else:
-            sys.exit(ERROR_INPUT)
+            return round(float(result),5)
+        return ERROR_INPUT
+    except Exception as e:
+        return e
+
+# user input and result output
+# if __name__ == '__main__':
+#     while True:
+#         sequence = input(WELCOME)
+#         sequence = remove_whitespace((sequence))
+#         print(sequence)
+#         lst = list(sequence)
+#         if sequence == 'q':
+#             break
+#         elif is_valid(lst):
+#             result = calc(lst)
+#             stack.clear()
+#             print("The result for", sequence, "is", "%.3f" % float(result))
+#         else:
+#             sys.exit(ERROR_INPUT)
