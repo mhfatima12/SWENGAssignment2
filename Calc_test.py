@@ -83,6 +83,11 @@ def test_calc() -> None:
         ('10/2', '5'),
         ('12.6/2', '6.3'),
         ('2482/20', '124.1'),
+        ('-10/2', '-5'),
+        ('log(100)', '2'),
+        ('exp(4)', '54.598'),
+        ('3+5*exp(4.2)/(5+7)', '30.786'),
+
         
     ]
 
@@ -97,6 +102,6 @@ def test_calc() -> None:
 
 def test_calc2(self) -> None:
     tests = [
-        with self.assertRaises(Exception):
-        '12/0'
+        #with self.assertRaises(Exception):
+        #'12/0'
     ]
