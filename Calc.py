@@ -246,7 +246,7 @@ def calculate(sequence):
     except Exception as e:
         return e
 
-
+"""
 # user input and result output
 if __name__ == '__main__':
     while True:
@@ -261,4 +261,4 @@ if __name__ == '__main__':
             stack.clear()
             print("The result for", sequence, "is", "%.3f" % float(result))
         else:
-            sys.exit(ERROR_INPUT)
+            sys.exit(ERROR_INPUT)"""
