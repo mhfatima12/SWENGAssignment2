@@ -77,12 +77,12 @@ def test_calc() -> None:
         ('20.57-2.6', '17.97'),
         ('12-6', '6'),
         ('12*6', '72'),
-        ('6.8*2.45', '16.66'),
+        ('6.8*2.45', '16.660'),
         ('-2*2', '-4'), #negative multiplication test
         ('10/2', '5'),
         ('12.6/2', '6.3'),
         ('2482/20', '124.1'),
-        ('12/0', 'Error: division by zero') #divide by zero test
+        ('12/0', assertRaises(Exception)) #divide by zero test
     ]
 
     hasFail = False
