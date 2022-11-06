@@ -68,7 +68,7 @@ def test_is_operator() -> None:
 
 def test_calc() -> None:
     tests = [
-        ('2+2', 4)
+        ('2+2', '4')
     ]
 
     hasFail = False
