@@ -83,7 +83,7 @@ def test_calc() -> None:
         ('10/2', '5'),
         ('12.6/2', '6.3'),
         ('2482/20', '124.1'),
-        ('12/0', assertRaises(Exception)) #divide by zero test
+        
     ]
 
     hasFail = False
@@ -95,3 +95,8 @@ def test_calc() -> None:
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
+def test_calc2() -> None:
+    tests = [
+        with self.assertRaises(Exception):
+        '12/0'
+    ]
