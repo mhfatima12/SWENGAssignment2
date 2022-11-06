@@ -87,8 +87,8 @@ def test_calc() -> None:
         ('log 100', '2'),
         ('2^4', '16'),
         ('exp(4)', '54.598'), #rounded off to three decimal places
-        ('exp(4)', '54.598150033144') #testing to make sure exp works, should be rounded to three decimal places in final implementation
-        ('3+5*exp(4.2)/(5+7)', '30.786'), #rounded off to three decimal places
+        ('exp(4)', '54.598150033144'), #testing to make sure exp works, should be rounded to three decimal places in final implementation
+        ('3+5*exp(4.2)/(5+7)', '30.786') #rounded off to three decimal places
 
         
     ]
