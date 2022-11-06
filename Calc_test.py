@@ -95,7 +95,7 @@ def test_calc() -> None:
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
-def test_calc2() -> None:
+def test_calc2(self) -> None:
     tests = [
         with self.assertRaises(Exception):
         '12/0'
