@@ -66,14 +66,14 @@ def test_is_operator() -> None:
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
-def test_calculate() -> None:
+def test_calc() -> None:
     tests = [
         ('2+2', 4)
     ]
 
     hasFail = False
     for test in tests:
-        result = Calc.is_operator(test[0])
+        result = Calc.calc(test[0])
         if result != test[1]:
             hasFail = True
             print("is_valid("+str(test[0])+") expected: " +
