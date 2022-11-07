@@ -99,8 +99,8 @@ def test_calc() -> None:
         ('(10-2)/(2*2)', '2.0'),
         ('(12+8)/(20-10)', '2.0'),
         ('(6/3)+(4*9)', '38.0'),
-        ('(2+2)-(6-3)*(12+6)', '-50.0'),
-        ('100/0', "Exception: Error: division by zero")
+        ('(2+2)-(6-3)*(12+6)', '-50.0')
+        #('100/0', "Exception: Error: division by zero")
     ]
 
     hasFail = False
@@ -114,4 +114,4 @@ def test_calc() -> None:
 
 def test_calc2():
     with pytest.raises(ZeroDivisionError, match='Error: division by zero'):
-        Calc.operation('100/0')
+        Calc.calc('100/0')
