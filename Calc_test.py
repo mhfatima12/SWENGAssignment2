@@ -98,22 +98,9 @@ def test_calc() -> None:
         ('(10-2)/(2*2)', '2.0'),
         ('(12+8)/(20-10)', '2.0'),
         ('(6/3)+(4*9)', '38.0'),
-        ('(2+2)-(6-3)*(12+6)', '-50.0')
+        ('(2+2)-(6-3)*(12+6)', '-50.0'),
     ]
 
-    hasFail = False
-    for test in tests:
-        result = Calc.calc(test[0])
-        if result != test[1]:
-            hasFail = True
-            print("calc("+str(test[0])+") expected: " +
-                  str(test[1])+" got: "+str(result))
-    assert not hasFail
-
-def test_calc() -> None:
-    tests = [
-        assert calc('100/0') == "Error: division by zero"
-    ]
     hasFail = False
     for test in tests:
         result = Calc.calc(test[0])
