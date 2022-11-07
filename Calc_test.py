@@ -113,5 +113,5 @@ def test_calc() -> None:
     assert not hasFail
 
 def test_calc2():
-    with pytest.raises(ZeroDivisionError, match='Error: division by zero'):
-        Calc.operation(['100', '0'], ['/'])
+    with pytest.raises(decimal.DivisonByZero):
+        Calc.mul_div(['100', '0'], ['/'])
