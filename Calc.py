@@ -75,8 +75,9 @@ def operation(number_list, operator_list):
 def bracket(lst):
     count = 0
     if '(' not in lst:
-        number_list = classify(lst)[0]
-        operator_list = classify(lst)[1]
+        classified = classify(lst)
+        number_list = classified[0]
+        operator_list = classified[1]
         if stack:
             stack.pop()
         stack.append(str(operation(number_list, operator_list)[0][0]))
