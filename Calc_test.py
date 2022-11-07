@@ -87,8 +87,8 @@ def test_calc() -> None:
         ('log 100', '4.605'),
         ('log 65', '4.174'),
         ('2^4', '16.0'),
-        ('6^-2', '0.027'),
-        ('-8^3', '-512'),
+        ('6^-2', '0.028'),
+        ('-8^3', '-512.0'),
         ('exp(4)', '54.598'), #rounded off to three decimal places
         ('exp(-2)', '0.135'),
         ('3+5*exp(4.2)/(5+7)', '30.786'), #rounded off to three decimal places
