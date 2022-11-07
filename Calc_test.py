@@ -1,5 +1,6 @@
 import Calc as Calc
 import unittest
+import pytest
 
 def test_is_valid() -> None:
     tests = [
@@ -110,3 +111,7 @@ def test_calc() -> None:
             print("calc("+str(test[0])+") expected: " +
                   str(test[1])+" got: "+str(result))
     assert not hasFail
+
+def test_calc2():
+    with pytest.raises(ZeroDivisionError, match='Error: division by zero'):
+        operation('100/0')
