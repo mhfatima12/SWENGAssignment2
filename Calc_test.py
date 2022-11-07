@@ -87,6 +87,7 @@ def test_calc() -> None:
         ('-10/2', '-5.0'),
         ('log 100', '4.605'),
         ('log 65', '4.174'),
+        #('log -4', ''),
         ('2^4', '16.0'),
         ('6^-2', '0.028'),
         ('-8^3', '-512.0'),
@@ -115,3 +116,9 @@ def test_calc() -> None:
 def test_calc2():
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['100', '0'], ['/'])
+    
+    with pytest.raises(ZeroDivisionError):
+        Calc.mul_div(['20.5', '0'], ['/'])
+
+    #with pytest.raises(ValueError):
+     #   Calc.log_exp(['-4.0'], ['log'])
