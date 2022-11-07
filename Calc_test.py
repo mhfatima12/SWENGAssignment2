@@ -119,5 +119,5 @@ def test_calc2():
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['20.5', '0'], ['/'])
 
-    with pytest.raises(ValueError):
-        Calc.log_exp(['-4'], ['log'])
+    with pytest.raises(Exception):
+        Calc.log_exp([''], ['log'])
