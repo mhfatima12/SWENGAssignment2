@@ -2,6 +2,7 @@ import Calc as Calc
 import unittest
 import pytest
 
+
 def test_is_valid() -> None:
     tests = [
         ('1', True),
@@ -11,7 +12,7 @@ def test_is_valid() -> None:
         ('test', False),
         ('12.a234', False),
         ('124904,3402', False),
-        #('++', False), #currently failing
+        ('++', False), #currently failing
         ('+', True),
         ('-', True),
         ('/', True),
@@ -19,9 +20,9 @@ def test_is_valid() -> None:
         ('^', True),
         ('a', False),
         ('log', True),
-        #('Log', True), #currently failing
-        #('EXP', True), #currently failing
-        #('ExP', True), #currently failing
+        ('Log', True), #currently failing
+        ('EXP', True), #currently failing
+        ('ExP', True), #currently failing
         ('exp', True),
         ('expres', False),
         ('logs', False),
@@ -34,25 +35,25 @@ def test_is_valid() -> None:
         result = Calc.is_valid(test[0])
         if result != test[1]:
             hasFail = True
-            print("is_valid("+str(test[0])+") expected: " +
-                  str(test[1])+" got: "+str(result))
+            print("is_valid(" + str(test[0]) + ") expected: " +
+                  str(test[1]) + " got: " + str(result))
     assert not hasFail
 
 
 def test_is_operator() -> None:
     tests = [
-        #('++', False), #currently failing
+        # ('++', False), #currently failing
         ('+', True),
         ('-', True),
         ('/', True),
         ('*', True),
         ('^', True),
         ('a', False),
-        #('log', True),
-        #('Log', True), #currently failing
-        #('EXP', True), #currently failing
-        #('ExP', True), #currently failing
-        #('exp', True),
+        ('log', True),
+        ('Log', True), #currently failing
+        ('EXP', True), #currently failing
+        ('ExP', True), #currently failing
+        ('exp', True),
         ('expres', False),
         ('logs', False),
         ('(', True),
@@ -64,9 +65,10 @@ def test_is_operator() -> None:
         result = Calc.is_operator(test[0])
         if result != test[1]:
             hasFail = True
-            print("is_valid("+str(test[0])+") expected: " +
-                  str(test[1])+" got: "+str(result))
+            print("is_valid(" + str(test[0]) + ") expected: " +
+                  str(test[1]) + " got: " + str(result))
     assert not hasFail
+
 
 def test_calc() -> None:
     tests = [
@@ -80,20 +82,20 @@ def test_calc() -> None:
         ('12-6', '6.0'),
         ('12*6', '72.0'),
         ('6.8*2.45', '16.66'),
-        ('-2*2', '-4.0'), #negative multiplication test
+        ('-2*2', '-4.0'),  # negative multiplication test
         ('10/2', '5.0'),
         ('12.6/2', '6.3'),
         ('2482/20', '124.1'),
         ('-10/2', '-5.0'),
         ('log 100', '4.605'),
         ('log 65', '4.174'),
-        #('log -4', ''),
+        #('log -4', 'ValueError'),
         ('2^4', '16.0'),
         ('6^-2', '0.028'),
         ('-8^3', '-512.0'),
-        ('exp(4)', '54.598'), #rounded off to three decimal places
+        ('exp(4)', '54.598'),  # rounded off to three decimal places
         ('exp(-2)', '0.135'),
-        ('3+5*exp(4.2)/(5+7)', '30.786'), #rounded off to three decimal places
+        ('3+5*exp(4.2)/(5+7)', '30.786'),  # rounded off to three decimal places
         ('3*5-2', '13.0'),
         ('2*4/2', '4.0'),
         ('10-6/2', '7.0'),
@@ -109,16 +111,15 @@ def test_calc() -> None:
         result = Calc.calc(test[0])
         if result != test[1]:
             hasFail = True
-            print("calc("+str(test[0])+") expected: " +
-                  str(test[1])+" got: "+str(result))
+            print("calc(" + str(test[0]) + ") expected: " +
+                  str(test[1]) + " got: " + str(result))
     assert not hasFail
+
 
 def test_calc2():
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['100', '0'], ['/'])
-    
+
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['20.5', '0'], ['/'])
 
-    with pytest.raises(ValueError):
-        Calc.operation(['-4.0'], ['log-'])
