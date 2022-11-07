@@ -110,11 +110,15 @@ def test_calc() -> None:
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
-class MyTestCase(unittest.TestCase):
-    # Returns true if 100 / 0 raises an Exception
-    def test_calc2(self):
-        with self.assertRaises(ZeroDivisionError):
-            '100 / 0'
-  
-if __name__ == '__main__': 
-    unittest.main()
+def test_calc() -> None:
+    tests = [
+        assert calc('100/0') == "Error: division by zero"
+    ]
+    hasFail = False
+    for test in tests:
+        result = Calc.calc(test[0])
+        if result != test[1]:
+            hasFail = True
+            print("calc("+str(test[0])+") expected: " +
+                  str(test[1])+" got: "+str(result))
+    assert not hasFail
