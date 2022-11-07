@@ -123,8 +123,3 @@ def test_calc2():
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['20.5', '0'], ['/'])
 
-    with pytest.raises(ValueError):
-        Calc.calc(['log-4'])
-
-
-
