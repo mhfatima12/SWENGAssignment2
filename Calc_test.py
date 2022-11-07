@@ -115,3 +115,6 @@ def test_calc() -> None:
 def test_calc2():
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['100', '0'], ['/'])
+    
+    with pytest.raises(ZeroDivisionError):
+        Calc.mul_div(['20.5', '0'], ['/'])
