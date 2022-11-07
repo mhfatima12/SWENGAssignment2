@@ -121,4 +121,4 @@ def test_calc2():
         Calc.mul_div(['20.5', '0'], ['/'])
 
     with pytest.raises(ValueError):
-        Calc.mul_div(['-4'], ['log'])
+        Calc.log_exp(['-4'], ['log'])
