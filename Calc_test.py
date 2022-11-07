@@ -12,7 +12,7 @@ def test_is_valid() -> None:
         ('test', False),
         ('12.a234', False),
         ('124904,3402', False),
-        ('++', False), #currently failing
+        ('++', False),  # currently failing
         ('+', True),
         ('-', True),
         ('/', True),
@@ -20,9 +20,9 @@ def test_is_valid() -> None:
         ('^', True),
         ('a', False),
         ('log', True),
-        ('Log', True), #currently failing
-        ('EXP', True), #currently failing
-        ('ExP', True), #currently failing
+        ('Log', True),  # currently failing
+        ('EXP', True),  # currently failing
+        ('ExP', True),  # currently failing
         ('exp', True),
         ('expres', False),
         ('logs', False),
@@ -35,14 +35,14 @@ def test_is_valid() -> None:
         result = Calc.is_valid(test[0])
         if result != test[1]:
             hasFail = True
-            print("is_valid(" + str(test[0]) + ") expected: " +
+            print("is_valid(" + list(test[0]) + ") expected: " +
                   str(test[1]) + " got: " + str(result))
     assert not hasFail
 
 
 def test_is_operator() -> None:
     tests = [
-        # ('++', False), #currently failing
+        ('++', False), #currently failing
         ('+', True),
         ('-', True),
         ('/', True),
@@ -50,9 +50,9 @@ def test_is_operator() -> None:
         ('^', True),
         ('a', False),
         ('log', True),
-        ('Log', True), #currently failing
-        ('EXP', True), #currently failing
-        ('ExP', True), #currently failing
+        ('Log', True),  # currently failing
+        ('EXP', True),  # currently failing
+        ('ExP', True),  # currently failing
         ('exp', True),
         ('expres', False),
         ('logs', False),
@@ -65,7 +65,7 @@ def test_is_operator() -> None:
         result = Calc.is_operator(test[0])
         if result != test[1]:
             hasFail = True
-            print("is_valid(" + str(test[0]) + ") expected: " +
+            print("is_valid(" + list(test[0]) + ") expected: " +
                   str(test[1]) + " got: " + str(result))
     assert not hasFail
 
@@ -89,7 +89,7 @@ def test_calc() -> None:
         ('-10/2', '-5.0'),
         ('log 100', '4.605'),
         ('log 65', '4.174'),
-        #('log -4', 'ValueError'),
+        # ('log -4', "Exception: Error: division by zero"), test it in test_calc2
         ('2^4', '16.0'),
         ('6^-2', '0.028'),
         ('-8^3', '-512.0'),
@@ -103,7 +103,7 @@ def test_calc() -> None:
         ('(12+8)/(20-10)', '2.0'),
         ('(6/3)+(4*9)', '38.0'),
         ('(2+2)-(6-3)*(12+6)', '-50.0')
-        #('100/0', "Exception: Error: division by zero")
+        # ('100/0', "Exception: Error: division by zero")  test it in test_calc2
     ]
 
     hasFail = False
@@ -111,7 +111,7 @@ def test_calc() -> None:
         result = Calc.calc(test[0])
         if result != test[1]:
             hasFail = True
-            print("calc(" + str(test[0]) + ") expected: " +
+            print("calc(" + list(test[0]) + ") expected: " +
                   str(test[1]) + " got: " + str(result))
     assert not hasFail
 
@@ -122,10 +122,9 @@ def test_calc2():
 
     with pytest.raises(ZeroDivisionError):
         Calc.mul_div(['20.5', '0'], ['/'])
-    
 
     with pytest.raises(ValueError):
-        Calc.calc(['log-4'])
-    
+        Calc.calc(list('log-4'))
+
     with pytest.raises(ValueError):
-        Calc.calc(['log-100'])
+        Calc.calc(list('log-100'))

@@ -120,7 +120,7 @@ def log_exp(number_list: List, operator_list: List):
                 number_list.pop(i)
                 number_list.pop(i)
                 if number_list[i] is None or number_list[i] == '':
-                    raise Exception("Invalid Input: log has no arguments given")
+                    raise ValueError("Invalid Input: log has no arguments given")
                 if float(number_list[i]) <= 0.0:
                     raise ValueError(MATHEMATICAL_ERROR)
                 number_list[i] = math.log(float(number_list[i]))
@@ -246,7 +246,7 @@ def calculate(sequence):
     except Exception as e:
         return e
 
-"""
+
 # user input and result output
 if __name__ == '__main__':
     while True:
@@ -261,4 +261,4 @@ if __name__ == '__main__':
             stack.clear()
             print("The result for", sequence, "is", "%.3f" % float(result))
         else:
-            sys.exit(ERROR_INPUT)"""
+            sys.exit(ERROR_INPUT)
