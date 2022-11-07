@@ -114,4 +114,4 @@ def test_calc() -> None:
 
 def test_calc2():
     with pytest.raises(ZeroDivisionError, match='Error: division by zero'):
-        operation('100/0')
+        calc('100/0')
