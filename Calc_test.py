@@ -110,6 +110,7 @@ def test_calc() -> None:
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
+class MyTestCase(unittest.TestCase):
 # Returns true if 100 / 0 raises an Exception
 def test_calc2(self):
     with self.assertRaises(ZeroDivisionError):
