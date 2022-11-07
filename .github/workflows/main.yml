@@ -30,7 +30,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/web_calculator:version1
+          tags: ${{ secrets.DOCKER_USERNAME }}/web_calculator:version2
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
