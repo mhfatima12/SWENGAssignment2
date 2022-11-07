@@ -99,7 +99,7 @@ def test_calc() -> None:
         ('(12+8)/(20-10)', '2.0'),
         ('(6/3)+(4*9)', '38.0'),
         ('(2+2)-(6-3)*(12+6)', '-50.0'),
-        ('100/0', "Error: division by zero")
+        ('100/0', "Exception: Error: division by zero")
     ]
 
     hasFail = False
