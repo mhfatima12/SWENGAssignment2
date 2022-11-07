@@ -65,7 +65,7 @@ def operation(number_list, operator_list):
     except InvalidOperation:
         raise Exception(INVALID_INPUT)
     except ValueError as e:
-        raise Exception(MATHEMATICAL_ERROR)
+        raise ValueError(MATHEMATICAL_ERROR)
     except Exception as e:
         raise e
     return number_list, operator_list
@@ -122,7 +122,7 @@ def log_exp(number_list: List, operator_list: List):
                 if number_list[i] is None or number_list[i] == '':
                     raise Exception("Invalid Input: log has no arguments given")
                 if float(number_list[i]) <= 0.0:
-                    raise Exception(MATHEMATICAL_ERROR)
+                    raise ValueError(MATHEMATICAL_ERROR)
                 number_list[i] = math.log(float(number_list[i]))
             else:
                 raise Exception(INVALID_INPUT)
