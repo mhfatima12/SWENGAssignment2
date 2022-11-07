@@ -69,30 +69,29 @@ def test_is_operator() -> None:
 
 def test_calc() -> None:
     tests = [
-        ('2+2', '4'),
-        ('2+2+2', '6'),
+        ('2+2', '4.0'),
+        ('2+2+2', '6.0'),
         ('2.5+7.8', '10.3'),
         ('24987.2+56.789', '25043.989'),
-        ('2-2', '0'),
-        ('76-4', '72'),
+        ('2-2', '0.0'),
+        ('76-4', '72.0'),
         ('20.57-2.6', '17.97'),
-        ('12-6', '6'),
-        ('12*6', '72'),
-        ('6.8*2.45', '16.660'),
-        ('-2*2', '-4'), #negative multiplication test
-        ('10/2', '5'),
+        ('12-6', '6.0'),
+        ('12*6', '72.0'),
+        ('6.8*2.45', '16.66'),
+        ('-2*2', '-4.0'), #negative multiplication test
+        ('10/2', '5.0'),
         ('12.6/2', '6.3'),
         ('2482/20', '124.1'),
-        ('-10/2', '-5'),
-        ('log 100', '2'),
-        ('2^4', '16'),
+        ('-10/2', '-5.0'),
+        ('log 100', '4.605'),
+        ('2^4', '16.0'),
         ('exp(4)', '54.598'), #rounded off to three decimal places
-        ('exp(4)', '54.598150033144236'), #testing to make sure exp works, should be rounded to three decimal places in final implementation
         ('3+5*exp(4.2)/(5+7)', '30.786'), #rounded off to three decimal places
-        ('3*5-2', '13'),
-        ('2*4/2', '4'),
-        ('10-6/2', '7'),
-        ('(10-2)/(2*2)', '2')
+        ('3*5-2', '13.0'),
+        ('2*4/2', '4.0'),
+        ('10-6/2', '7.0'),
+        ('(10-2)/(2*2)', '2.0')
     ]
 
     hasFail = False
@@ -100,11 +99,11 @@ def test_calc() -> None:
         result = Calc.calc(test[0])
         if result != test[1]:
             hasFail = True
-            print("is_valid("+str(test[0])+") expected: " +
+            print("calc("+str(test[0])+") expected: " +
                   str(test[1])+" got: "+str(result))
     assert not hasFail
 
-def test_calc2(self) -> None:
+def test_calc2() -> None:
     tests = [
         #with self.assertRaises(Exception):
         #'12/0'
